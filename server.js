@@ -7,7 +7,7 @@ app.get('/api/whoami', (req, res) => {
   res.json({
     ipaddress: req.ip,
     language: req.acceptsLanguages()[0],
-    operating_system: util.inspect(req, true, null)
+    operating_system: req.headers['user-agent'].match(/\((.[^\)]+)/)[1]
   })
 })
 
